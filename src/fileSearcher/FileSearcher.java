@@ -15,22 +15,29 @@ public class FileSearcher {
 	}
 
 	public static void getBrojRecenica(File file) {
+		
 		int brojacRecenica = 0;
+		
 		// Provjeramo da li fajl postoji ili ga je potrebno kreirati
-		if (file.exists()) {			
+		if (file.exists()) {
+			// Kreiramo citac
 			try (java.util.Scanner input = new java.util.Scanner(file)) {
 				// Citamo podatke iz fajla
 				while(input.hasNext()) {
-					if (Character.isLetter(input.next().charAt(0)))
+					String rijecZnakIliBroj = input.next();
+					char zadnjiKarakter = rijecZnakIliBroj.charAt(rijecZnakIliBroj.length() - 1);
+					
+					if (zadnjiKarakter == '.' || zadnjiKarakter == '?' || zadnjiKarakter == '!')
 						brojacRecenica++;
 				}
+				
+				System.out.println("U fajlu se nalazi " + brojacRecenica + " recenica.");
 			} catch (FileNotFoundException e) {
 				e.printStackTrace();
 			}
 		} else {
 			System.out.println("Fajl ne postoji");	
 		}
-		// CRATITITITITIT
 	}
 
 	public static void getBrojSlova(File file) {
