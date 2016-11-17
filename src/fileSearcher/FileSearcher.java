@@ -4,8 +4,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
-import java.io.File;
-
 public class FileSearcher {
 
 	public static void getBrojRijeci(File file) {
